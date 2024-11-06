@@ -1,6 +1,6 @@
 public class AverageGrades {
     public static void main(String[] args) {
-        int[][] grades = {{51, 83, 28}, {0, 38, 95}};
+        int[][] grades = {{51, 83, 28}}};
         int[] weights = {30, 40, 30};
         int[] averages = average_grades(grades, weights);
 
