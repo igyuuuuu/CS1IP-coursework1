@@ -1,23 +1,29 @@
+import java.util.Scanner;
 public class SevenSegment {
     public static void main(String[] args) {
-        display(28);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("number: ");
+        int input = scanner.nextInt();
+        display(input);
+        scanner.close();
     }
-    static void display(int n) {
+    public static void display(int n) {
         String[] lines = new String[5];
-        do {
+        while (n > 0) {
             int digit = n % 10;
-            for (int i = 1; i <= 5; i++) {
-                lines[i - 1] = ssd(digit, i) + (lines[i - 1] != null ? lines[i - 1] : "");
-            }
-            n /= 10;
-        } while (n > 0);
-        for (String line : lines) {
-            if (line != null) {
-                System.out.println(line);
+            n = n / 10;
+            for (int i = 0; i < 5; i++) {
+                if (lines[i] == null) {
+                    lines[i] = ssd(digit, i + 1);
+                } else {
+                    lines[i] = ssd(digit, i + 1) + " " + lines[i];
+                }
             }
         }
+        for (String line : lines) {
+            System.out.println(line);
+        }
     }
-
     static String ssd(int d, int n) {
         switch ((d * 10) + n) {
             case 1: case 5: case 21: case 23: case 25: case 31: case 33: case 35:
